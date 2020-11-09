@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thb.mapper.CartMapper">
+    <resultMap id="cartMap" type="cart">
+        <id property="id" column="c_id"></id>
+        <result property="lesson_info" column="lesson_info"/>
+        <result property="user_id" column="user_id"/>
+        <result property="lesson_price" column="lesson_price"/>
+        <result property="lesson_id" column="lid"/>
+        <result property="teacher_name" column="t_name"/>
+    </resultMap>
+
+    <resultMap id="cartMap1" type="cart">
+        <id property="id" column="c_id"></id>
+        <result property="user_id" column="user_id"/>
+        <result property="lesson_id" column="lesson_id"/>
+    </resultMap>
+
+    <select id="findCart" resultMap="cartMap" parameterType="int">
+       SELECT cart.user_id,cart.c_id ,lesson.`lesson_info`,lesson.`lid`,lesson.`lesson_price`,teacher.`t_name`
+       FROM cart
+       JOIN lesson ON cart.`lesson_id`=lesson.`lid`
+       JOIN teacher ON lesson.`tid`=teacher.`t_id`
+        WHERE cart.`user_id`=#{id}
+    </select>
+
+
+    <select id="addCart" parameterType="int" >
+        insert into cart(lesson_id,user_id) values (#{lid},#{uid})
+    </select>
+
+    <delete id="delCart" parameterType="int">
+        delete from cart where c_id = #{id}
+    </delete>
+
+    <select id="inCart" parameterType="int" resultMap="cartMap1">
+        select * from cart where lesson_id=#{lid} and user_id=#{uid}
+    </select>
+
+
+</mapper>

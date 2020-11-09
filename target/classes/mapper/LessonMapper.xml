@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thb.mapper.LessonMapper">
+    <resultMap id="lessonMap" type="lesson">
+        <id property="id" column="lid"></id>
+        <result property="info" column="lesson_info"/>
+        <result property="tid" column="tid"/>
+        <result property="video" column="lesson_address"/>
+        <result property="img" column="lesson_img"/>
+        <result property="count" column="lesson_count"/>
+        <result property="price" column="lesson_price"/>
+    </resultMap>
+
+    <resultMap id="lessonMap1" type="lesson">
+        <id property="id" column="lid"></id>
+        <result property="info" column="lesson_info"/>
+        <result property="tid" column="tid"/>
+        <result property="video" column="lesson_address"/>
+        <result property="img" column="lesson_img"/>
+        <result property="count" column="lesson_count"/>
+        <result property="price" column="lesson_price"/>
+        <result property="tname" column="t_name"></result>
+    </resultMap>
+
+    <select id="findAll" resultMap="lessonMap">
+        select * from lesson
+    </select>
+
+    <select id="findLessonByid" resultMap="lessonMap" parameterType="int">
+        select * from lesson where lid=#{id}
+    </select>
+
+    <select id="findmylesson" parameterType="int" resultMap="lessonMap1">
+     SELECT lesson.*, teacher.t_name FROM order1
+    LEFT JOIN lesson ON order1.`lesson_id`=lesson.`lid`
+    LEFT JOIN teacher ON teacher.t_id=lesson.tid
+    WHERE order1.`order_state`=1
+    </select>
+
+
+    <resultMap id="lessonMap_admin" type="lesson">
+        <id property="id" column="lid"></id>
+        <result property="info" column="lesson_info"/>
+        <result property="tid" column="tid"/>
+        <result property="video" column="lesson_address"/>
+        <result property="img" column="lesson_img"/>
+        <result property="count" column="lesson_count"/>
+        <result property="price" column="lesson_price"/>
+        <result property="tname" column="t_name"></result>
+    </resultMap>
+
+    <select id="findAlllesson" resultMap="lessonMap_admin">
+        SELECT lesson.*,teacher.`t_name` FROM lesson LEFT JOIN teacher ON lesson.`tid`=teacher.`t_id`
+    </select>
+
+
+    <insert id="addLesson" parameterType="lesson">
+        insert into lesson(lesson_info,tid,lesson_address,lesson_img,lesson_price) values (#{info},#{tid},#{video},#{img},#{price})
+    </insert>
+</mapper>

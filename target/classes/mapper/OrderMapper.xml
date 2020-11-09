@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thb.mapper.OrderMapper">
+
+<!--    <resultMap id="ordernopay" type="order">-->
+<!--        <id property="order_id" column="order_id"></id>-->
+<!--        <result property="user_id" column="user_id"></result>-->
+<!--        <result property="lesson_id" column="lesson_id"></result>-->
+<!--        <result property="lesson_price" column="lesson_price"></result>-->
+<!--        <result property="order_date" column="order_date"></result>-->
+<!--        <result property="order_state" column="order_state"></result>-->
+<!--        <result property="lesson_info" column="lesson"-->
+<!--    </resultMap>-->
+
+
+    <insert id="addOrder"  parameterType="order" >
+        <selectKey keyColumn="order_id" keyProperty="order_id" resultType="int" order="AFTER">
+            select last_insert_id();
+        </selectKey>
+
+        insert into order1(user_id,lesson_id,lesson_price,order_date) values (#{user_id},#{lesson_id},#{lesson_price},#{order_date})
+    </insert>
+
+    <select id="findbuyOrder" resultType="order" parameterType="int">
+        select * from order1 where user_id=#{uid} and lesson_id=#{lid} and order_state=1
+    </select>
+
+    <update id="update_orderstate" parameterType="int">
+        update order1 set order_state=1 where order_id=#{id}
+    </update>
+
+    <insert id="buyone" parameterType="order">
+        <selectKey keyColumn="order_id" keyProperty="order_id" resultType="int" order="AFTER">
+            select last_insert_id();
+        </selectKey>
+        insert into order1(user_id,lesson_id,lesson_price,order_date) values (#{user_id},#{lesson_id},#{lesson_price},#{order_date})
+    </insert>
+
+
+    <select id="findOrdernopay" parameterType="int" resultType="order">
+         SELECT order1.*,lesson.`lesson_info` ,teacher.`t_name`FROM order1
+         JOIN lesson
+            ON order1.lesson_id=lesson.lid
+         JOIN teacher
+            ON teacher.`t_id`=lesson.`tid`
+                 WHERE order1.order_state=0 AND order1.user_id=#{id}
+    </select>
+
+    <select id="inordernopay" parameterType="int" resultType="order">
+        select * from order1 where user_id=#{uid} and lesson_id=#{cid} and order_state = 0
+    </select>
+</mapper>
