@@ -24,7 +24,7 @@
 
 ![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109153102.png)
 
-![image-20201109153126732](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109153126732.png)
+![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109155242.png)
 
 ![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109153150.png)
 
@@ -50,7 +50,7 @@
 
 ![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109154928.png)
 
-## 代付订单
+## 待付订单
 
 ![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109153428.png)
 
