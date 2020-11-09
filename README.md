@@ -48,7 +48,7 @@
 
 ![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109153514.png)
 
-![image-20201109153536665](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109153536665.png)
+![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109154928.png)
 
 ## 代付订单
 
