@@ -74,7 +74,7 @@
 
 ![](https://gitee.com/thb_eliauk/typora/raw/master/img/20201109154139.png)
 
-![image-20201109154202548](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109154202548.png)
+![](https://gitee.com/thb_eliauk/typora/raw/master/img/image-20201109154202548.png)
 
 
 
